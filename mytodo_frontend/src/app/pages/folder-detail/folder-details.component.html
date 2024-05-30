@@ -1,1 +1,19 @@
-<p>folder-details works!</p>
+<form [formGroup]="folderForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="id">ID:</label>
+      <input id="id" formControlName="id" type="text" disabled />
+    </div>
+  
+    <div>
+      <label for="title">Titel:</label>
+      <input id="title" formControlName="title" type="text" required />
+    </div>
+  
+    <div>
+      <label for="description">Beschreibung:</label>
+      <textarea id="description" formControlName="description" required></textarea>
+    </div>
+  
+    <button type="submit">Speichern</button>
+  </form>
+  

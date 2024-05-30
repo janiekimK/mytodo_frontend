@@ -1,1 +1,28 @@
-<p>employee-details works!</p>
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="id">ID:</label>
+      <input id="id" formControlName="id" type="text" disabled />
+    </div>
+  
+    <div>
+      <label for="name">Name:</label>
+      <input id="name" formControlName="name" type="text" required />
+    </div>
+  
+    <div>
+      <label for="firstName">Vorname:</label>
+      <input id="firstName" formControlName="firstName" type="text" required />
+    </div>
+  
+    <div formArrayName="assignedTasks">
+      <div *ngFor="let task of assignedTasks.controls; let i = index" [formGroupName]="i">
+        <label for="taskTitle">Aufgabe:</label>
+        <input id="taskTitle" formControlName="title" placeholder="Aufgabentitel" />
+        <button type="button" (click)="removeTask(i)">Entfernen</button>
+      </div>
+      <button type="button" (click)="addTask({ id: null, title: '' })">Aufgabe hinzufügen</button>
+    </div>
+  
+    <button type="submit">Speichern</button>
+  </form>
+  
